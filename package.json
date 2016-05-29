@@ -1,0 +1,60 @@
+{
+  "name": "OpenUI5-SAPUI5-Local-Development-Template",
+  "version": "1.0.0",
+  "description": "Local development environment template for SAPUI5/OPENUI5",
+  "main": "app/app.js",
+  "engines": {
+    "node": "~6.1.0"
+  },
+  "scripts": {
+    "shrinkdeps": "rm npm-shrinkwrap.json && rm -rf node_shrinkwrap && npm shrinkwrap --dev && shrinkpack",
+    "commit": "git-cz",
+    "coverage-open": "open ./coverage/lcov-report/index.html",
+    "coverage-check": "istanbul check-coverage",
+    "lint": "eslint ./app/ --ext .js",
+    "setVersion": "source ~/.nvm/nvm.sh && nvm use",
+    "prestart": "npm run setVersion",
+    "pretest": "source ~/.nvm/nvm.sh && nvm use",
+    "precommit": "npm run lint",
+    "test": "NODE_PATH=./app/ && istanbul cover -x *.test.js _mocha -- ./app/**/__TEST__/*.test.js",
+    "test:single": "NODE_PATH=./app/ mocha ./app/**/__TEST__/*.test.js",
+    "start": "NODE_PATH=./app/ && nodemon -L ./app/app.js"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/locke189/OpenUI5-SAPUI5-Local-Development-Template.git"
+  },
+  "keywords": [
+    "express",
+    "node"
+  ],
+  "author": "Juan Insuasti <juan.insuasti@gmail.com> (http://github.com/locke189)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/locke189/OpenUI5-SAPUI5-Local-Development-Template/issues"
+  },
+  "homepage": "https://github.com/locke189/OpenUI5-SAPUI5-Local-Development-Template#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  },
+  "devDependencies": {
+    "chai": "~3.5.0",
+    "commitizen": "~2.8.1",
+    "cz-conventional-changelog": "~1.1.6",
+    "eslint": "~2.9.0",
+    "eslint-config-airbnb": "~9.0.1",
+    "eslint-plugin-import": "~1.7.0",
+    "eslint-plugin-jsx-a11y": "~1.2.0",
+    "eslint-plugin-node": "~1.2.1",
+    "eslint-plugin-react": "~5.0.1",
+    "istanbul": "~0.4.3",
+    "mocha": "~2.4.5",
+    "nodemon": "~1.9.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  }
+}
